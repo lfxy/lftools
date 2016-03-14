@@ -21,12 +21,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'asins/vimcdoc'
+Plugin 'vim-airline/vim-airline'
+Plugin 'bling/vim-bufferline'
 "Plugin 'Tabular'
-"Plugin 'EasyMotion'
 "Plugin 'cscope.vim'
 "Plugin 'CCTree'
 "Plugin 'c.vim'
-"Plugin 'The-NERD-tree'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'tpope/vim-surround'
 "Plugin 'Shougo/neocomplete.vim'
@@ -53,14 +53,12 @@ call vundle#end()            " required
 "
 " }}}
 "general{{{
-let mapleader = "\<Space>"
+let mapleader = ","
 "filetype plugin on
 
 syntax on " 自动语法高亮
-colorscheme desert "darkblue zellner evening darkblue murphy morning 
 "syntax enable
-"set background=light
-"colorscheme solarized
+colorscheme molokai "desert "darkblue zellner evening darkblue murphy morning 
 
 set number " 显示行号
 set ruler " 打开状态栏标尺
@@ -81,7 +79,7 @@ set foldmethod=marker " 设置语法折叠 /marker,indent,diff,syntax
 set encoding=utf-8
 set termencoding=utf-8
 set fencs=utf-8,gb18030,gbk,gb2312
-set statusline=%F%m%r%h%w\ [POS=%l,%v][%p%%]
+"set statusline=%F%m%r%h%w\ [POS=%l,%v][%p%%]
 map <C-i> I<Esc>
 map <Leader>o o<Esc>
 imap <M-space> <Esc>
@@ -110,6 +108,15 @@ set viminfo='1000
 set wildmenu
 let helptags=$VIM."/vimfiles/doc"
 set helplang=cn
+set ambiwidth=double
+
+"locate last cursor location
+if has("autocmd")
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \   exe "normal g`\"" |
+                \ endif
+endif
 "set autochdir " 自动切换当前目录为当前文件所在的目录
 ""imap jj <Esc>
 
@@ -123,7 +130,6 @@ set helplang=cn
 "todo"set hidden " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
 "set guioptions-=T 	" 隐藏工具栏
 "set guioptions-=m 	" 隐藏菜单栏
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 "todo"set foldenable		 " 开始折叠
 "set foldcolumn=1 " 设置折叠区域的宽度
 "setlocal foldlevel=2 " 设置折叠层数为
@@ -136,30 +142,10 @@ set helplang=cn
 "endif
 
 "todo"let s:PlugWinSize = 35
-"map tt o<Esc>
-
 "todo"set selection=exclusive
 "todo"set selectmode=mouse,key
 "todo"set report=0		" 通过使用: commands命令，告诉我们文件的哪一行被改变过
-
 "todo"set fillchars=vert:\ ,stl:\ ,stlnc:\		" 在被分割的窗口间显示空白，便于阅读
-
-
-"function! CurDir()
-"    let curdir = substitute(getcwd(), '/root',"~/","g")
-"    return curdir
-"endfunction
-"set statusline=\ %f%m%r%h\ %w\ %<CWD:\ %{CurDir()}\ %=Pos:\ %l/%L:%c\ %p%%\
-
-"}}}
-"about tab{{{
-nnoremap tn :tabnext<cr>
-nnoremap tp :tabprevious<cr>
-nnoremap te :tabedit
-nnoremap tc :tabclose<cr>
-nnoremap tr :tabnew<space>
-
-nnoremap cd :cd<space>
 "}}}
 "ctrlP{{{ 
 let g:ctrlp_map = '<c-p>'
@@ -224,7 +210,7 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeAutoCenter = 1
 let g:NERDTreeHighlightCursorline = 1
-let NERDTreeShowLineNumbers=1
+"let NERDTreeShowLineNumbers=1
 "}}}
 "easymotion{{{
 let g:EasyMotion_leader_key = '<Leader>'
@@ -232,7 +218,27 @@ let g:EasyMotion_leader_key = '<Leader>'
 "map <Leader>k <Plug>(easymotion-k)
 "nmap s <Plug>(easymotion-overwin-f)
 "}}}
-"auto complete{{{
+"airline&bufferline{{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tagbar#enabled = 1
+"let g:airline#extensions#ctrlp#show_adjacent_modes = 1
+"let g:airline#extensions#tabline#show_buffers = 1
+"let g:airline#extensions#tabline#show_tabs = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+"}}}
+"supertab{{{
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
 :inoremap { {<CR>}<ESC>O
@@ -255,13 +261,18 @@ set completeopt=longest,menu
 let g:SuperTabRetainCompletionType=2
 let g:neocomplete#enable_at_startup = 1
 "}}}
-"locate last cursor location{{{
-if has("autocmd")
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \   exe "normal g`\"" |
-                \ endif
-endif
+"tab&buffer{{{
+nnoremap tn :tabnext<cr>
+nnoremap tp :tabprevious<cr>
+nnoremap te :tabedit
+nnoremap tc :tabclose<cr>
+nnoremap tr :tabnew<space>
+
+nnoremap <leader>l :bn<cr>
+nnoremap <leader>h :bp<cr>
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+nnoremap cd :cd<space>
 "}}}
 "others{{{
 set showcmd
