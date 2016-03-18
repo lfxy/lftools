@@ -22,7 +22,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'asins/vimcdoc'
 Plugin 'vim-airline/vim-airline'
-Plugin 'bling/vim-bufferline'
+"Plugin 'bling/vim-bufferline'
 "Plugin 'Tabular'
 "Plugin 'cscope.vim'
 "Plugin 'CCTree'
@@ -218,7 +218,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 "map <Leader>k <Plug>(easymotion-k)
 "nmap s <Plug>(easymotion-overwin-f)
 "}}}
-"airline&bufferline{{{
+"airline{{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -270,7 +270,7 @@ nnoremap tr :tabnew<space>
 
 nnoremap <leader>l :bn<cr>
 nnoremap <leader>h :bp<cr>
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>q :bp <BAR> bd #<CR>
 
 nnoremap cd :cd<space>
 "}}}
