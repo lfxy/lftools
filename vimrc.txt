@@ -22,7 +22,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'asins/vimcdoc'
 Plugin 'vim-airline/vim-airline'
-"Plugin 'bling/vim-bufferline'
+Plugin 'bling/vim-bufferline'
 "Plugin 'Tabular'
 "Plugin 'cscope.vim'
 "Plugin 'CCTree'
@@ -153,7 +153,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$'
+    \ 'file': '\v\.(o|lo|exe|so|dll|zip|tar|tar.gz|pyc)$'
     \}
 
 let g:ctrlp_open_new_file = 'v'
@@ -220,14 +220,34 @@ let g:EasyMotion_leader_key = '<Leader>'
 "}}}
 "airline{{{
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#buffers_label = 'b'
+let g:airline#extensions#tabline#tabs_label = 't'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline#extensions#tabline#fnametruncate = 5 "char number in buffer, only one with formatter
+let g:airline#extensions#tabline#show_splits = 0 "show t as tabs_label 0
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#bufferline#overwrite_variables = 0
+"let g:airline#extensions#tabline#show_tab_nr = 1
+"let g:airline#extensions#tabline#tab_nr_type = 1
+
+
+
+
+"let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
 "let g:airline#extensions#ctrlp#show_adjacent_modes = 1
-"let g:airline#extensions#tabline#show_buffers = 1
-"let g:airline#extensions#tabline#show_tabs = 1
+"let g:airline_inactive_collapse=1
+"let g:airline#extensions#tabline#show_tab_type = 1
+"let g:airline_detect_modified=1
+"let g:airline#extensions#tagbar#enabled = 1
+"let g:airline#extensions#tabline#fnamecollapse = 0
+"let g:airline_exclude_filenames = []
+"let g:airline#extensions#tabline#exclude_preview = 1
+"let g:airline#extensions#tabline#tab_min_count = 0
+
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -237,6 +257,25 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+
+"let g:airline#extensions#tabline#buffer_nr_show = 1  "don't need
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"}}}
+"tab&buffer{{{
+nnoremap tn :tabnext<cr>
+nnoremap tp :tabprevious<cr>
+nnoremap te :tabedit
+nnoremap tc :tabclose<cr>
+nnoremap tr :tabnew<space>
+
+nnoremap <leader>l :bn<cr>
+nnoremap <leader>h :bp<cr>
+nmap <leader>q :bp <BAR> bd #<CR>
+
+nnoremap cd :cd<space>
 "}}}
 "supertab{{{
 :inoremap ( ()<ESC>i
@@ -260,19 +299,6 @@ set nocp
 set completeopt=longest,menu
 let g:SuperTabRetainCompletionType=2
 let g:neocomplete#enable_at_startup = 1
-"}}}
-"tab&buffer{{{
-nnoremap tn :tabnext<cr>
-nnoremap tp :tabprevious<cr>
-nnoremap te :tabedit
-nnoremap tc :tabclose<cr>
-nnoremap tr :tabnew<space>
-
-nnoremap <leader>l :bn<cr>
-nnoremap <leader>h :bp<cr>
-nmap <leader>q :bp <BAR> bd #<CR>
-
-nnoremap cd :cd<space>
 "}}}
 "others{{{
 set showcmd
