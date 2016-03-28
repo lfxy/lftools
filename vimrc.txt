@@ -22,7 +22,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'asins/vimcdoc'
 Plugin 'vim-airline/vim-airline'
-Plugin 'bling/vim-bufferline'
+"Plugin 'bling/vim-bufferline'
 "Plugin 'Tabular'
 "Plugin 'cscope.vim'
 "Plugin 'CCTree'
@@ -50,6 +50,10 @@ call vundle#end()            " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
+" Before run BundleInstall, run:
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" apt-get install silversearcher-ag or https://github.com/ggreer/the_silver_searcher for building from source
 "
 " }}}
 "general{{{
