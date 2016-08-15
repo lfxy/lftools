@@ -182,15 +182,15 @@ let g:ag_working_path_mode='r'
 let g:ag_apply_lmappings=0
 let g:ag_highlight=1
 
-map <leader>g :Ag -w <space>
+map <leader>g :Ag -w<space>
 "}}}
 "ctags{{{
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 "set tags=tags;
 set tags=./tags,./../tags,./*/tags
 "}}}
 "tagbar{{{
-let g:tagbar_ctags_bin = '/usr/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_width = 30
 let g:tagbar_autofocus = 0
