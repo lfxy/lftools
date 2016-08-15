@@ -102,7 +102,7 @@ set clipboard+=unnamed "共享剪贴板
 set autowrite	"自动保存
 set autoindent		" 自动缩进
 set cindent			" 使用C样式的缩进
-set gdefault		"行内替换
+"set gdefault		"行内替换
 set langmenu=zh_CN.UTF-8		"语言设置
 set helplang=cn
 
@@ -186,7 +186,8 @@ map <leader>g :Ag -w <space>
 "}}}
 "ctags{{{
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-set tags=tags;
+"set tags=tags;
+set tags=./tags,./../tags,./*/tags
 "}}}
 "tagbar{{{
 let g:tagbar_ctags_bin = '/usr/bin/ctags'
@@ -271,7 +272,7 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 "tab&buffer{{{
 nnoremap tn :tabnext<cr>
 nnoremap tp :tabprevious<cr>
-nnoremap te :tabedit
+nnoremap te :edit<space>
 nnoremap tc :tabclose<cr>
 nnoremap tr :tabnew<space>
 
