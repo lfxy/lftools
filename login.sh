@@ -1,26 +1,26 @@
 #!/bin/bash
 
 if [ $# == 0 ]; then
-    echo "need param!"
-    exit 1
-elif [[ "$1" == "63" || "$1" == "trogdor" ]]; then
-    echo root@172.16.31.63
-    ssh root@172.16.31.63
-elif [[ "$1" == "60" || "$1" == "tdn" ]]; then
-    echo root@172.16.31.60
-    ssh root@172.16.31.60
-elif [[ $1 == "61" || "$1" == "tms" ]]; then
-    echo root@172.16.31.61
-    ssh root@172.16.31.61
-elif [[ $1 == "demeter" || $1 == "62" ]]; then
-    echo root@172.16.31.62
-    ssh root@172.16.31.62
-elif [[ $1 == "59" || $1 == "monitor" ]]; then
-    echo caoz1@172.16.31.59
-    ssh caoz1@172.16.31.59
-elif [ $1 == "242" ]; then
-    echo root@172.16.31.242
-    ssh root@172.16.31.242
+    echo caozhiqiang1@10.209.11.11
+    ssh caozhiqiang1@10.209.11.11
+elif [ "$1" == "155"  ]; then
+    echo lfxy@192.168.1.155
+    ssh lfxy@192.168.1.155
+elif [[ "$1" == "111" || "$1" == "vm1" ]]; then
+    echo caozq@10.15.218.111
+    ssh caozq@10.15.218.111
+elif [[ $1 == "vm2" || $1 == "100" ]]; then
+    echo caozq@192.168.1.100
+    ssh caozq@192.168.1.100
+elif [[ $1 == "vm3" || $1 == "101" ]]; then
+    echo caozq@192.168.1.101
+    ssh caozq@192.168.1.101
+elif [[ $1 == "vm4" || $1 == "102" ]]; then
+    echo caozq@192.168.1.102
+    ssh caozq@192.168.1.102
+elif [[ $1 == "11" || "$1" == "t1" ]]; then
+    echo caozhiqiang1@10.209.11.11
+    ssh caozhiqiang1@10.209.11.11
 else
     echo wrong parameter
     exit -1
