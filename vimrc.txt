@@ -62,7 +62,7 @@ let mapleader = ","
 
 syntax on " 自动语法高亮
 "syntax enable
-colorscheme molokai "desert "darkblue zellner evening darkblue murphy morning 
+colorscheme molokai "desert "darkblue zellner evening darkblue murphy morning
 
 set number " 显示行号
 set ruler " 打开状态栏标尺
@@ -79,7 +79,7 @@ set matchtime=2 " 短暂跳转到匹配括号的时间
 set magic 		" 设置魔术
 set smartindent " 开启新行时使用智能自动缩进
 set laststatus=2 " 显示状态栏 (默认值为 1, 无法显示状态栏)
-set foldmethod=marker " 设置语法折叠 /marker,indent,diff,syntax 
+set foldmethod=marker " 设置语法折叠 /marker,indent,diff,syntax
 set encoding=utf-8
 set termencoding=utf-8
 set fencs=utf-8,gb18030,gbk,gb2312
@@ -90,7 +90,13 @@ imap <M-space> <Esc>
 
 set cursorline " 突出显示当前行
 hi CursorColumn cterm=NONE ctermbg=red ctermfg=white guibg=NONE guifg=NONE
-highlight CursorLine term=bold,reverse cterm=bold,reverse ctermbg=black
+"highlight CursorLine term=NONE,reverse cterm=bold,reverse ctermbg=white
+"hi CursorColumn cterm=NONE ctermbg=red ctermfg=white guibg=NONE guifg=NONE
+"highlight CursorLine term=bold,reverse cterm=bold,reverse ctermbg=black
+
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
 set nocursorcolumn
 set history=500
 set showcmd
@@ -98,7 +104,7 @@ autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 set t_Co=256
 set linebreak
 set hls
-set clipboard+=unnamed "共享剪贴板  
+set clipboard+=unnamed "共享剪贴板
 set autowrite	"自动保存
 set autoindent		" 自动缩进
 set cindent			" 使用C样式的缩进
@@ -126,7 +132,7 @@ endif
 
 "set cmdheight=1 " 设定命令行的行数为 1
 "set nobackup " 覆盖文件时不备份
-"filetype on  
+"filetype on
 "set backupcopy=yes " 设置备份时的行为为覆盖
 "set noerrorbells " 关闭错误信息响铃
 "set novisualbell " 关闭使用可视响铃代替呼叫
@@ -137,8 +143,8 @@ endif
 "todo"set foldenable		 " 开始折叠
 "set foldcolumn=1 " 设置折叠区域的宽度
 "setlocal foldlevel=2 " 设置折叠层数为
-"set foldclose=all " 设置为自动关闭折叠 
-"todo"set guifont=Courier_New:h10:cANSI   " 设置字体  
+"set foldclose=all " 设置为自动关闭折叠
+"todo"set guifont=Courier_New:h10:cANSI   " 设置字体
 "todo"set formatoptions+=mM
 "todo"set fileencodings=ucs-bom,utf-8,cp936
 "if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
@@ -151,7 +157,7 @@ endif
 "todo"set report=0		" 通过使用: commands命令，告诉我们文件的哪一行被改变过
 "todo"set fillchars=vert:\ ,stl:\ ,stlnc:\		" 在被分割的窗口间显示空白，便于阅读
 "}}}
-"ctrlP{{{ 
+"ctrlP{{{
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
