@@ -22,6 +22,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'asins/vimcdoc'
 Plugin 'vim-airline/vim-airline'
+"Plugin 'brookhong/cscope.vim'
 "Plugin 'bling/vim-bufferline'
 "Plugin 'Tabular'
 "Plugin 'cscope.vim'
@@ -89,10 +90,13 @@ map <Leader>o o<Esc>
 imap <M-space> <Esc>
 
 set cursorline " 突出显示当前行
-hi CursorColumn cterm=NONE ctermbg=red ctermfg=white guibg=NONE guifg=NONE
-"highlight CursorLine term=NONE,reverse cterm=bold,reverse ctermbg=white
+set cursorcolumn
+hi cursorline cterm=bold ctermbg=white ctermfg=brown guibg=NONE guifg=NONE
+hi cursorcolumn cterm=bold ctermbg=white ctermfg=darkred guibg=NONE guifg=NONE
+"black, brown, grey, blue, green, cyan, magenta, yellow, white
+
 "hi CursorColumn cterm=NONE ctermbg=red ctermfg=white guibg=NONE guifg=NONE
-"highlight CursorLine term=bold,reverse cterm=bold,reverse ctermbg=black
+"highlight CursorLine cterm=bold,reverse ctermbg=black term=bold,reverse
 
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
