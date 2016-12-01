@@ -11,9 +11,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
-Bundle 'tacahiroy/ctrlp-funky'
 Plugin 'rking/ag.vim'
-Plugin 'supertab'
 Plugin 'majutsushi/tagbar'
 Plugin 'a.vim'
 Plugin 'scrooloose/nerdtree'
@@ -22,15 +20,20 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'asins/vimcdoc'
 Plugin 'vim-airline/vim-airline'
+Plugin 'fatih/vim-go'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
+"Bundle 'Blackrush/vim-gocode'
+"Bundle 'dgryski/vim-godef'
+"Bundle 'tacahiroy/ctrlp-funky'
+"Plugin 'cscope.vim'
+"Plugin 'supertab'
 "Plugin 'brookhong/cscope.vim'
 "Plugin 'bling/vim-bufferline'
 "Plugin 'Tabular'
-"Plugin 'cscope.vim'
 "Plugin 'CCTree'
 "Plugin 'c.vim'
-"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'tpope/vim-surround'
-"Plugin 'Shougo/neocomplete.vim'
 
 "Not sure to install such package, did I need it?
 "Plugin 'scrooloose/syntastic'
@@ -38,10 +41,9 @@ Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-"filetype plugin indent on    " required
+filetype plugin indent on    " required
 
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -59,7 +61,6 @@ call vundle#end()            " required
 " }}}
 "general{{{
 let mapleader = ","
-"filetype plugin on
 
 syntax on " 自动语法高亮
 "syntax enable
@@ -111,7 +112,7 @@ set hls
 set clipboard+=unnamed "共享剪贴板
 set autowrite	"自动保存
 set autoindent		" 自动缩进
-set cindent			" 使用C样式的缩进
+"set cindent			" 使用C样式的缩进
 "set gdefault		"行内替换
 set langmenu=zh_CN.UTF-8		"语言设置
 set helplang=cn
@@ -131,35 +132,6 @@ if has("autocmd")
                 \   exe "normal g`\"" |
                 \ endif
 endif
-"set autochdir " 自动切换当前目录为当前文件所在的目录
-""imap jj <Esc>
-
-"set cmdheight=1 " 设定命令行的行数为 1
-"set nobackup " 覆盖文件时不备份
-"filetype on
-"set backupcopy=yes " 设置备份时的行为为覆盖
-"set noerrorbells " 关闭错误信息响铃
-"set novisualbell " 关闭使用可视响铃代替呼叫
-"set t_vb= " 置空错误铃声的终端代码
-"todo"set hidden " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
-"set guioptions-=T 	" 隐藏工具栏
-"set guioptions-=m 	" 隐藏菜单栏
-"todo"set foldenable		 " 开始折叠
-"set foldcolumn=1 " 设置折叠区域的宽度
-"setlocal foldlevel=2 " 设置折叠层数为
-"set foldclose=all " 设置为自动关闭折叠
-"todo"set guifont=Courier_New:h10:cANSI   " 设置字体
-"todo"set formatoptions+=mM
-"todo"set fileencodings=ucs-bom,utf-8,cp936
-"if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
-"set ambiwidth=double
-"endif
-
-"todo"let s:PlugWinSize = 35
-"todo"set selection=exclusive
-"todo"set selectmode=mouse,key
-"todo"set report=0		" 通过使用: commands命令，告诉我们文件的哪一行被改变过
-"todo"set fillchars=vert:\ ,stl:\ ,stlnc:\		" 在被分割的窗口间显示空白，便于阅读
 "}}}
 "ctrlP{{{
 let g:ctrlp_map = '<c-p>'
@@ -177,14 +149,6 @@ let g:ctrlp_open_new_file = 'v'
 "let g:ctrlp_match_window_reversed=0
 "let g:ctrlp_mruf_max=500
 "let g:ctrlp_follow_symlinks=1
-"}}}
-"ctrlp-funky{{{
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-let g:ctrlp_funky_syntax_highlight = 1
-
-let g:ctrlp_extensions = ['funky']
 "}}}
 "Ag{{{
 let g:ag_prg="ag --vimgrep --smart-case"
@@ -214,6 +178,35 @@ let g:tagbar_autoclose = 1
 "todo"let g:tagbar_autoshowtag = 1
 "todo"let g:tagbar_autopreview = 1
 "todo"autocmd VimEnter * nested :TagbarOpen
+
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
 "}}}
 "nerdtree{{{
 map <leader>r :NERDTreeToggle<CR>
@@ -317,6 +310,100 @@ set completeopt=longest,menu
 let g:SuperTabRetainCompletionType=2
 let g:neocomplete#enable_at_startup = 1
 "}}}
+"neocomplete{{{
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"}}}
+"go{{{
+au FileType go nmap <leader>1 <Plug>(go-run)
+au FileType go nmap <leader>2 <Plug>(go-build)
+au FileType go nmap <leader>3 <Plug>(go-test)
+au FileType go nmap <leader>4 <Plug>(go-coverage)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_autosave = 0
+let g:go_play_open_browser = 0
+let g:go_get_update = 0
+let g:go_snippet_engine = "neosnippet"
+"}}}
 "others{{{
 set showcmd
 set listchars=tab:>-,trail:-,eol:$
@@ -328,32 +415,8 @@ set si
 let NERDSpaceDelims=1 " 让注释符与语句之间留一个空格
 let g:checksyntax_auto = 0 " 不自动检查
 
-"swich windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"nnoremap <C-c> <C-w>c
-"nnoremap <C-o> <C-w>o
-"let g:CCTreeCscopeDb = "cscope.out"
-"let g:CCTreeRecursiveDepth = 3
-"let g:CCTreeOrientation = "leftabove"
-"}}}
-"------------------------------------------------
-"leader{{{
-"map  <Leader>f <Plug>(easymotion-bd-f)
-"map <leader>g :Ag<space>
-"map <leader>r :NERDTreeToggle<CR>
-"nmap <leader>t :TagbarToggle<CR>
-"nmap <leader>w :WMToggle<cr>
-"nnoremap <Leader>fu :CtrlPFunky<Cr>
-"nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-l> <C-w>l
-"nnoremap <C-c> <C-w>c
-"nnoremap <C-o> <C-w>o
-"map to o<Esc>
 "}}}
