@@ -69,8 +69,9 @@ colorscheme molokai "desert "darkblue zellner evening darkblue murphy morning
 set number " 显示行号
 set ruler " 打开状态栏标尺
 set shiftwidth=4 " 设定 << 和 >> 命令移动时的宽度为 4
+:set ts=4
 set expandtab "tab变为空格
-set softtabstop=4 " 使得按退格键时可以一次删掉 4 个空格
+"set softtabstop=4 " 使得按退格键时可以一次删掉 4 个空格
 set tabstop=4 	" 设定 tab 长度为 4
 set nowrapscan " 禁止在搜索到文件两端时重新搜索
 set incsearch " 输入搜索内容时就显示搜索结果
@@ -92,7 +93,7 @@ imap <M-space> <Esc>
 
 set cursorline " 突出显示当前行
 set cursorcolumn
-hi cursorline cterm=bold ctermbg=white ctermfg=brown guibg=NONE guifg=NONE
+hi cursorline cterm=bold ctermbg=white ctermfg=darkred guibg=NONE guifg=NONE
 hi cursorcolumn cterm=bold ctermbg=white ctermfg=darkred guibg=NONE guifg=NONE
 "black, brown, grey, blue, green, cyan, magenta, yellow, white
 
@@ -242,6 +243,7 @@ let g:airline#extensions#bufferline#overwrite_variables = 0
 "let g:airline#extensions#tabline#show_tab_nr = 1
 "let g:airline#extensions#tabline#tab_nr_type = 1
 
+"let g:airline#extensions#tabline#fnamemod = ':p:.'
 
 
 
@@ -350,18 +352,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -382,13 +372,13 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "}}}
 "go{{{
-au FileType go nmap <leader>1 <Plug>(go-run)
-au FileType go nmap <leader>2 <Plug>(go-build)
-au FileType go nmap <leader>3 <Plug>(go-test)
-au FileType go nmap <leader>4 <Plug>(go-coverage)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+"au FileType go nmap <Leader>zr <Plug>(go-run)
+"au FileType go nmap <Leader>zb <Plug>(go-build)
+"au FileType go nmap <Leader>zt <Plug>(go-test)
+"au FileType go nmap <Leader>zc <Plug>(go-coverage)
+"au FileType go nmap <Leader>ds <Plug>(go-def-split)
+"au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+"au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -403,6 +393,17 @@ let g:go_fmt_autosave = 0
 let g:go_play_open_browser = 0
 let g:go_get_update = 0
 let g:go_snippet_engine = "neosnippet"
+
+"let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_generate_tags = 1
+augroup go
+  autocmd!
+
+  " Show by default 4 spaces for a tab
+  autocmd BufNewFile,BufRead *.go setlocal expandtab tabstop=4 shiftwidth=4
+augroup END
 "}}}
 "others{{{
 set showcmd
