@@ -1,0 +1,262 @@
+{
+  "CDH": {
+    "stack-select": {
+      "HDFS": {
+        "DATANODE": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-datanode",
+          "INSTALL": [
+            "hadoop-hdfs-datanode"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-datanode"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-datanode"
+          ]
+        },
+        "HDFS_CLIENT": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-client",
+          "INSTALL": [
+            "hadoop-hdfs-client"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        },
+        "NAMENODE": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-namenode",
+          "INSTALL": [
+            "hadoop-hdfs-namenode"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-namenode"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-namenode"
+          ]
+        },
+        "NFS_GATEWAY": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-nfs3",
+          "INSTALL": [
+            "hadoop-hdfs-nfs3"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-nfs3"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-nfs3"
+          ]
+        },
+        "JOURNALNODE": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-journalnode",
+          "INSTALL": [
+            "hadoop-hdfs-journalnode"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-journalnode"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-journalnode"
+          ]
+        },
+        "SECONDARY_NAMENODE": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-secondarynamenode",
+          "INSTALL": [
+            "hadoop-hdfs-secondarynamenode"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-secondarynamenode"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-secondarynamenode"
+          ]
+        },
+        "ZKFC": {
+          "STACK-SELECT-PACKAGE": "hadoop-hdfs-zkfc",
+          "INSTALL": [
+            "hadoop-hdfs-zkfc"
+          ],
+          "PATCH": [
+            "hadoop-hdfs-zkfc"
+          ],
+          "STANDARD": [
+            "hadoop-hdfs-zkfc"
+          ]
+        }
+      },
+      "MAPREDUCE2": {
+        "HISTORYSERVER": {
+          "STACK-SELECT-PACKAGE": "hadoop-mapreduce-historyserver",
+          "INSTALL": [
+            "hadoop-mapreduce-historyserver"
+          ],
+          "PATCH": [
+            "hadoop-mapreduce-historyserver"
+          ],
+          "STANDARD": [
+            "hadoop-mapreduce-historyserver"
+          ]
+        },
+        "MAPREDUCE2_CLIENT": {
+          "STACK-SELECT-PACKAGE": "hadoop-mapreduce-client",
+          "INSTALL": [
+            "hadoop-mapreduce-client"
+          ],
+          "PATCH": [
+            "hadoop-mapreduce-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        }
+      },
+      "SUPERSET": {
+        "SUPERSET": {
+          "STACK-SELECT-PACKAGE": "superset",
+          "INSTALL": [
+            "superset"
+          ],
+          "PATCH": [
+            "superset"
+          ],
+          "STANDARD": [
+            "superset"
+          ]
+        }
+      },
+      "YARN": {
+        "APP_TIMELINE_SERVER": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-timelineserver",
+          "INSTALL": [
+            "hadoop-yarn-timelineserver"
+          ],
+          "PATCH": [
+            "hadoop-yarn-timelineserver"
+          ],
+          "STANDARD": [
+            "hadoop-yarn-timelineserver"
+          ]
+        },
+        "TIMELINE_READER": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-timelinereader",
+          "INSTALL": [
+            "hadoop-yarn-timelinereader"
+          ],
+          "PATCH": [
+            "hadoop-yarn-timelinereader"
+          ],
+          "STANDARD": [
+            "hadoop-yarn-timelinereader"
+          ]
+        },
+        "NODEMANAGER": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-nodemanager",
+          "INSTALL": [
+            "hadoop-yarn-nodemanager"
+          ],
+          "PATCH": [
+            "hadoop-yarn-nodemanager"
+          ],
+          "STANDARD": [
+            "hadoop-yarn-nodemanager"
+          ]
+        },
+        "RESOURCEMANAGER": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-resourcemanager",
+          "INSTALL": [
+            "hadoop-yarn-resourcemanager"
+          ],
+          "PATCH": [
+            "hadoop-yarn-resourcemanager"
+          ],
+          "STANDARD": [
+            "hadoop-yarn-resourcemanager"
+          ]
+        },
+        "YARN_CLIENT": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-client",
+          "INSTALL": [
+            "hadoop-yarn-client"
+          ],
+          "PATCH": [
+            "hadoop-yarn-client"
+          ],
+          "STANDARD": [
+            "hadoop-client"
+          ]
+        },
+        "YARN_REGISTRY_DNS": {
+          "STACK-SELECT-PACKAGE": "hadoop-yarn-registrydns",
+          "INSTALL": [
+            "hadoop-yarn-registrydns"
+          ],
+          "PATCH": [
+            "hadoop-yarn-registrydns"
+          ],
+          "STANDARD": [
+            "hadoop-yarn-registrydns"
+          ]
+        }
+      },
+      "ZOOKEEPER": {
+        "ZOOKEEPER_CLIENT": {
+          "STACK-SELECT-PACKAGE": "zookeeper-client",
+          "INSTALL": [
+            "zookeeper-client"
+          ],
+          "PATCH": [
+            "zookeeper-client"
+          ],
+          "STANDARD": [
+            "zookeeper-client"
+          ]
+        },
+        "ZOOKEEPER_SERVER": {
+          "STACK-SELECT-PACKAGE": "zookeeper-server",
+          "INSTALL": [
+            "zookeeper-server"
+          ],
+          "PATCH": [
+            "zookeeper-server"
+          ],
+          "STANDARD": [
+            "zookeeper-server"
+          ]
+        }
+      }
+    },
+    "conf-select": {
+      "hadoop": [
+        {
+          "conf_dir": "/etc/hadoop/conf",
+          "current_dir": "{0}/hadoop/etc/hadoop",
+          "component": "hadoop-client"
+        }
+      ],
+      "zookeeper": [
+        {
+          "conf_dir": "/etc/zookeeper/conf",
+          "current_dir": "{0}/current/zookeeper-client/conf",
+          "component": "zookeeper-client"
+        }
+      ]
+    },
+    "conf-select-patching": {
+      "HDFS": {
+        "packages": []
+      },
+      "MAPREDUCE2": {
+        "packages": []
+      },
+      "YARN": {
+        "packages": []
+      },
+      "ZOOKEEPER": {
+        "packages": ["zookeeper"]
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "CDH": {
+    "stack_features": [
+      {
+        "name": "cctest",
+        "description": "Snappy compressor/decompressor support",
+        "min_version": "2.0.0.0",
+        "max_version": "2.2.0.0"
+      }
+    ]
+  }
+}
